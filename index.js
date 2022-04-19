@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
-const express = require('express');
 
+const express = require('express');
+const mongoose = require('mongoose')
 const app = express();
 app.get('/',(req,res) =>{
     res.send('<h1>the server is working</h1>');

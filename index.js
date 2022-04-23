@@ -1,7 +1,13 @@
 
 const express = require('express');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const routes = require('./routes/tea'); // import the routes
 const app = express();
+app.use(express.json());
+
+app.use('/', routes); //to use the routes
+
+app.use('/', routes); //to use the route
 app.get('/',(req,res) =>{
     res.send('<h1>the server is working</h1>');
 });

@@ -20,12 +20,12 @@ const getOneQuestion = (req, res, next) => {
 
 //POST '/question/:name'
 const newComment = (req, res, next) => {
-    res.json({message: "POST 1 tea comment"});
+    res.json({message: "POST 1 question comment"});
 };
 
 //DELETE '/question/:name'
 const deleteOneQuestion = (req, res, next) => {
-    res.json({message: "DELETE 1 tea"});
+    res.json({message: "DELETE 1 question"});
 };
 
 //export controller functions

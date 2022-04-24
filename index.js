@@ -1,13 +1,22 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
-const routes = require('./routes/tea'); // import the routes
+const helmet = require('helmet');
+const compression = require('compression');
+const routes = require('./routes/question'); // import the routes
 const app = express();
 app.use(express.json());
+app.use(helmet());
+app.use(compression());
 
 app.use('/', routes); //to use the routes
 
-app.use('/', routes); //to use the route
+// add this below app.use("/", routes) to make index.html a static file
+app.route('/')
+  .get(function (req, res) {
+    res.sendFile(process.cwd() + '/index.html');
+});
+ 
 app.get('/',(req,res) =>{
     res.send('<h1>the server is working</h1>');
 });
@@ -17,7 +26,11 @@ try {
     // Connect to the MongoDB cluster
     mongoose.connect(
       mongoAtlasUri,
-      { useNewUrlParser: true, useUnifiedTopology: true },
+      { useNewUrlParser: true, useUnifiedTopology: true,
+        seever: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
+        replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
+      
+      },
       () => console.log(" Mongoose is connected"),
     );
   } catch (e) {

@@ -3,11 +3,11 @@ const express = require('express'); //import express
 
 const router  = express.Router(); 
 
-const questionController = require('../controllers/question'); 
+const questionController = require('../controller/question'); 
 
 router.get('/question', questionController.getAllQuestion);
 
-router.post('/question', teaController.newQuestion); 
+router.post('/question', questionController.newQuestion); 
 
 router.delete('/question', questionController.deleteAllQuestion);
 

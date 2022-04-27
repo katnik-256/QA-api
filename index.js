@@ -1,4 +1,3 @@
-
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
@@ -27,7 +26,7 @@ try {
     mongoose.connect(
       mongoAtlasUri,
       { useNewUrlParser: true, useUnifiedTopology: true,
-        seever: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
+        server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
         replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
       
       },
